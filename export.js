@@ -1,7 +1,7 @@
 (function () {
     var url = window.location.href.toString().toLowerCase();
     if (url.indexOf('submissionadmin') > -1) {
-        var queryParameter = '?pagesize=0&page=1&';
+        var queryParameter = '?pagesize=0&page=1#printing-csv';
         var exportToCSV = function() {
             var table = $('table.dynamic-forms-submissions').clone(true);
             table.find('thead > tr > th:first-child').remove();
@@ -33,6 +33,7 @@
         $(document).ready(function () {
             if (url.indexOf(queryParameter) > -1) {
                 exportToCSV();
+                history.replaceState("", "", window.location.pathname + window.location.search);
             }
         });
     }
